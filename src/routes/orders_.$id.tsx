@@ -35,7 +35,7 @@ function OrderDetail() {
               <div><p className="text-muted-foreground">رقم الطلب</p><CalendarDays className="mt-1 size-5 text-primary" /></div>
               <div className="text-left" dir="ltr"><p className="font-bold">#{o.id}</p><p className="text-muted-foreground">{o.date}</p></div>
             </div>
-            <Link to="/products_/$id" params={{ id: p.id }} className="mt-4 flex items-center gap-3 rounded-xl border p-3">
+            <Link to="/products/$id" params={{ id: p.id }} className="mt-4 flex items-center gap-3 rounded-xl border p-3">
               <span className="flex size-16 items-center justify-center rounded-lg bg-[var(--mint-surface)] text-primary"><p.icon className="size-8" /></span>
               <div className="flex-1"><p className="font-bold">{p.name}</p><p className="text-xs text-muted-foreground">الكمية: {o.count}</p><p className="font-bold text-primary" dir="ltr">$ {o.total}</p></div>
               <ChevronLeft className="text-muted-foreground" />
