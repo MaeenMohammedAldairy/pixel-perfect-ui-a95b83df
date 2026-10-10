@@ -39,10 +39,10 @@ export const Route = createFileRoute("/")({
 });
 
 const stats = [
-  { label: "المنتجات", value: "24", growth: "12%", icon: Box, tone: "amber" },
-  { label: "المنشورات", value: "18", growth: "38%", icon: CalendarRange, tone: "violet" },
-  { label: "المحادثات", value: "34", growth: "19%", icon: MessageSquareMore, tone: "blue" },
-  { label: "الطلبات", value: "12", growth: "20%", icon: CalendarDays, tone: "green" },
+  { label: "المنتجات", value: "24", growth: "12%", icon: Box, tone: "amber", to: "/products" as const },
+  { label: "المنشورات", value: "18", growth: "38%", icon: CalendarRange, tone: "violet", to: "/posts" as const },
+  { label: "المحادثات", value: "34", growth: "19%", icon: MessageSquareMore, tone: "blue", to: "/chats" as const },
+  { label: "الطلبات", value: "12", growth: "20%", icon: CalendarDays, tone: "green", to: "/orders" as const },
 ];
 const platforms: { platform: SocialPlatform; label: string }[] = [
   { platform: "whatsapp", label: "واتساب" },
@@ -119,8 +119,8 @@ function Index() {
       </section>
 
       <section className="stats-section" aria-label="ملخص الحساب">
-        {stats.map(({ label, value, growth, icon: Icon, tone }) => (
-          <div className="stat-item" key={label}>
+        {stats.map(({ label, value, growth, icon: Icon, tone, to }) => (
+          <Link to={to} className="stat-item transition hover:shadow-md" key={label}>
             <span className={`stat-icon stat-${tone}`}>
               <Icon />
             </span>
@@ -130,7 +130,7 @@ function Index() {
               <ArrowUp />
               {growth}
             </span>
-          </div>
+          </Link>
         ))}
       </section>
 
