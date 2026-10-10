@@ -72,7 +72,7 @@ export function SectionPage({
           </button>
         ))}
       </div>
-      <div className="flex flex-col gap-3 px-2 pb-6">{children(filter)}</div>
+      <div className="flex flex-col gap-3 px-2 pb-6">{children(filter ?? "الكل")}</div>
       <nav className="bottom-navigation" aria-label="القائمة الرئيسية">
         {nav.map(({ label, icon: I, to }) => (
           <Link
