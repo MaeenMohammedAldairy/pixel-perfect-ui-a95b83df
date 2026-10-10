@@ -15,9 +15,13 @@ import { Route as ConnectAccountsRouteImport } from './routes/connect-accounts'
 import { Route as OrdersRouteImport } from './routes/orders'
 import { Route as PostsRouteImport } from './routes/posts'
 import { Route as ProductsRouteImport } from './routes/products'
+import { Route as ChatsIdRouteImport } from './routes/chats_.$id'
 import { Route as ConnectFacebookRouteImport } from './routes/connect.facebook'
 import { Route as ConnectInstagramRouteImport } from './routes/connect.instagram'
 import { Route as ConnectWhatsappRouteImport } from './routes/connect.whatsapp'
+import { Route as OrdersIdRouteImport } from './routes/orders_.$id'
+import { Route as PostsIdRouteImport } from './routes/posts_.$id'
+import { Route as ProductsIdRouteImport } from './routes/products_.$id'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -49,6 +53,11 @@ const ProductsRoute = ProductsRouteImport.update({
   path: '/products',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ChatsIdRoute = ChatsIdRouteImport.update({
+  id: '/chats_/$id',
+  path: '/chats/$id',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ConnectFacebookRoute = ConnectFacebookRouteImport.update({
   id: '/connect/facebook',
   path: '/connect/facebook',
@@ -64,6 +73,21 @@ const ConnectWhatsappRoute = ConnectWhatsappRouteImport.update({
   path: '/connect/whatsapp',
   getParentRoute: () => rootRouteImport,
 } as any)
+const OrdersIdRoute = OrdersIdRouteImport.update({
+  id: '/orders_/$id',
+  path: '/orders/$id',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PostsIdRoute = PostsIdRouteImport.update({
+  id: '/posts_/$id',
+  path: '/posts/$id',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ProductsIdRoute = ProductsIdRouteImport.update({
+  id: '/products_/$id',
+  path: '/products/$id',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -72,9 +96,13 @@ export interface FileRoutesByFullPath {
   '/orders': typeof OrdersRoute
   '/posts': typeof PostsRoute
   '/products': typeof ProductsRoute
+  '/chats/$id': typeof ChatsIdRoute
   '/connect/facebook': typeof ConnectFacebookRoute
   '/connect/instagram': typeof ConnectInstagramRoute
   '/connect/whatsapp': typeof ConnectWhatsappRoute
+  '/orders/$id': typeof OrdersIdRoute
+  '/posts/$id': typeof PostsIdRoute
+  '/products/$id': typeof ProductsIdRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -83,9 +111,13 @@ export interface FileRoutesByTo {
   '/orders': typeof OrdersRoute
   '/posts': typeof PostsRoute
   '/products': typeof ProductsRoute
+  '/chats/$id': typeof ChatsIdRoute
   '/connect/facebook': typeof ConnectFacebookRoute
   '/connect/instagram': typeof ConnectInstagramRoute
   '/connect/whatsapp': typeof ConnectWhatsappRoute
+  '/orders/$id': typeof OrdersIdRoute
+  '/posts/$id': typeof PostsIdRoute
+  '/products/$id': typeof ProductsIdRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -95,9 +127,13 @@ export interface FileRoutesById {
   '/orders': typeof OrdersRoute
   '/posts': typeof PostsRoute
   '/products': typeof ProductsRoute
+  '/chats_/$id': typeof ChatsIdRoute
   '/connect/facebook': typeof ConnectFacebookRoute
   '/connect/instagram': typeof ConnectInstagramRoute
   '/connect/whatsapp': typeof ConnectWhatsappRoute
+  '/orders_/$id': typeof OrdersIdRoute
+  '/posts_/$id': typeof PostsIdRoute
+  '/products_/$id': typeof ProductsIdRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -108,9 +144,13 @@ export interface FileRouteTypes {
     | '/orders'
     | '/posts'
     | '/products'
+    | '/chats/$id'
     | '/connect/facebook'
     | '/connect/instagram'
     | '/connect/whatsapp'
+    | '/orders/$id'
+    | '/posts/$id'
+    | '/products/$id'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -119,9 +159,13 @@ export interface FileRouteTypes {
     | '/orders'
     | '/posts'
     | '/products'
+    | '/chats/$id'
     | '/connect/facebook'
     | '/connect/instagram'
     | '/connect/whatsapp'
+    | '/orders/$id'
+    | '/posts/$id'
+    | '/products/$id'
   id:
     | '__root__'
     | '/'
@@ -130,9 +174,13 @@ export interface FileRouteTypes {
     | '/orders'
     | '/posts'
     | '/products'
+    | '/chats_/$id'
     | '/connect/facebook'
     | '/connect/instagram'
     | '/connect/whatsapp'
+    | '/orders_/$id'
+    | '/posts_/$id'
+    | '/products_/$id'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -142,9 +190,13 @@ export interface RootRouteChildren {
   OrdersRoute: typeof OrdersRoute
   PostsRoute: typeof PostsRoute
   ProductsRoute: typeof ProductsRoute
+  ChatsIdRoute: typeof ChatsIdRoute
   ConnectFacebookRoute: typeof ConnectFacebookRoute
   ConnectInstagramRoute: typeof ConnectInstagramRoute
   ConnectWhatsappRoute: typeof ConnectWhatsappRoute
+  OrdersIdRoute: typeof OrdersIdRoute
+  PostsIdRoute: typeof PostsIdRoute
+  ProductsIdRoute: typeof ProductsIdRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -191,6 +243,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ProductsRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/chats_/$id': {
+      id: '/chats_/$id'
+      path: '/chats/$id'
+      fullPath: '/chats/$id'
+      preLoaderRoute: typeof ChatsIdRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/connect/facebook': {
       id: '/connect/facebook'
       path: '/connect/facebook'
@@ -212,6 +271,27 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ConnectWhatsappRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/orders_/$id': {
+      id: '/orders_/$id'
+      path: '/orders/$id'
+      fullPath: '/orders/$id'
+      preLoaderRoute: typeof OrdersIdRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/posts_/$id': {
+      id: '/posts_/$id'
+      path: '/posts/$id'
+      fullPath: '/posts/$id'
+      preLoaderRoute: typeof PostsIdRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/products_/$id': {
+      id: '/products_/$id'
+      path: '/products/$id'
+      fullPath: '/products/$id'
+      preLoaderRoute: typeof ProductsIdRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
@@ -222,9 +302,13 @@ const rootRouteChildren: RootRouteChildren = {
   OrdersRoute: OrdersRoute,
   PostsRoute: PostsRoute,
   ProductsRoute: ProductsRoute,
+  ChatsIdRoute: ChatsIdRoute,
   ConnectFacebookRoute: ConnectFacebookRoute,
   ConnectInstagramRoute: ConnectInstagramRoute,
   ConnectWhatsappRoute: ConnectWhatsappRoute,
+  OrdersIdRoute: OrdersIdRoute,
+  PostsIdRoute: PostsIdRoute,
+  ProductsIdRoute: ProductsIdRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
