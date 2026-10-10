@@ -8,3 +8,7 @@
 > Commits you push to the connected branch sync back to Lovable and show up in
 > the editor, so keep the branch in a working state.
 <!-- LOVABLE:END -->
+
+- Keep the dashboard at the index route and account connection at `/connect-accounts`, sharing brand and social icon components; this keeps the requested screens independently navigable and visually consistent.
+- Define dashboard visual styling and semantic colors in the global stylesheet; this keeps the reference design consistent across screen sizes.
+- Keep separate leaf routes for Instagram, Facebook, and WhatsApp under `/connect`, rendering a shared platform connection component; this gives each screen its own URL and metadata without duplicating its layout.

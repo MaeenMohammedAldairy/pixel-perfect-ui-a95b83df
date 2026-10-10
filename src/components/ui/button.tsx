@@ -9,6 +9,10 @@ const buttonVariants = cva(
   {
     variants: {
       variant: {
+        dashboard: "dashboard-button",
+        platformCopy: "platform-copy-button",
+        dashboardIcon: "dashboard-icon-button",
+        dashboardNav: "dashboard-nav-button",
         default: "bg-primary text-primary-foreground shadow hover:bg-primary/90",
         destructive: "bg-destructive text-destructive-foreground shadow-sm hover:bg-destructive/90",
         outline:

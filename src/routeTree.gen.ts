@@ -10,33 +10,89 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as ConnectAccountsRouteImport } from './routes/connect-accounts'
+import { Route as ConnectFacebookRouteImport } from './routes/connect.facebook'
+import { Route as ConnectInstagramRouteImport } from './routes/connect.instagram'
+import { Route as ConnectWhatsappRouteImport } from './routes/connect.whatsapp'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ConnectAccountsRoute = ConnectAccountsRouteImport.update({
+  id: '/connect-accounts',
+  path: '/connect-accounts',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ConnectFacebookRoute = ConnectFacebookRouteImport.update({
+  id: '/connect/facebook',
+  path: '/connect/facebook',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ConnectInstagramRoute = ConnectInstagramRouteImport.update({
+  id: '/connect/instagram',
+  path: '/connect/instagram',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ConnectWhatsappRoute = ConnectWhatsappRouteImport.update({
+  id: '/connect/whatsapp',
+  path: '/connect/whatsapp',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/connect-accounts': typeof ConnectAccountsRoute
+  '/connect/facebook': typeof ConnectFacebookRoute
+  '/connect/instagram': typeof ConnectInstagramRoute
+  '/connect/whatsapp': typeof ConnectWhatsappRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/connect-accounts': typeof ConnectAccountsRoute
+  '/connect/facebook': typeof ConnectFacebookRoute
+  '/connect/instagram': typeof ConnectInstagramRoute
+  '/connect/whatsapp': typeof ConnectWhatsappRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/connect-accounts': typeof ConnectAccountsRoute
+  '/connect/facebook': typeof ConnectFacebookRoute
+  '/connect/instagram': typeof ConnectInstagramRoute
+  '/connect/whatsapp': typeof ConnectWhatsappRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/connect-accounts'
+    | '/connect/facebook'
+    | '/connect/instagram'
+    | '/connect/whatsapp'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to:
+    | '/'
+    | '/connect-accounts'
+    | '/connect/facebook'
+    | '/connect/instagram'
+    | '/connect/whatsapp'
+  id:
+    | '__root__'
+    | '/'
+    | '/connect-accounts'
+    | '/connect/facebook'
+    | '/connect/instagram'
+    | '/connect/whatsapp'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  ConnectAccountsRoute: typeof ConnectAccountsRoute
+  ConnectFacebookRoute: typeof ConnectFacebookRoute
+  ConnectInstagramRoute: typeof ConnectInstagramRoute
+  ConnectWhatsappRoute: typeof ConnectWhatsappRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -48,11 +104,43 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/connect-accounts': {
+      id: '/connect-accounts'
+      path: '/connect-accounts'
+      fullPath: '/connect-accounts'
+      preLoaderRoute: typeof ConnectAccountsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/connect/facebook': {
+      id: '/connect/facebook'
+      path: '/connect/facebook'
+      fullPath: '/connect/facebook'
+      preLoaderRoute: typeof ConnectFacebookRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/connect/instagram': {
+      id: '/connect/instagram'
+      path: '/connect/instagram'
+      fullPath: '/connect/instagram'
+      preLoaderRoute: typeof ConnectInstagramRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/connect/whatsapp': {
+      id: '/connect/whatsapp'
+      path: '/connect/whatsapp'
+      fullPath: '/connect/whatsapp'
+      preLoaderRoute: typeof ConnectWhatsappRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  ConnectAccountsRoute: ConnectAccountsRoute,
+  ConnectFacebookRoute: ConnectFacebookRoute,
+  ConnectInstagramRoute: ConnectInstagramRoute,
+  ConnectWhatsappRoute: ConnectWhatsappRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
